@@ -4,11 +4,8 @@ set(DEQP_TARGET_NAME "Surfaceless")
 
 include(FindPkgConfig)
 
-set(DEQP_USE_SURFACELESS ON)
-
-set(DEQP_SUPPORT_GLES2   ON)
-set(DEQP_SUPPORT_GLES3   ON)
 set(DEQP_SUPPORT_EGL     ON)
+set(DEQP_USE_SURFACELESS ON)
 
 find_library(GLES2_LIBRARIES GLESv2)
 find_library(GLES3_LIBRARIES GLESv3)

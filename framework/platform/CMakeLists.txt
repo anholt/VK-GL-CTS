@@ -19,7 +19,7 @@ if (NOT DEFINED TCUTIL_PLATFORM_SRCS)
 			win32/tcuWin32VulkanPlatform.cpp
 			)
 
-	elseif ((DE_OS_IS_UNIX OR DE_OS_IS_OSX) AND (DEQP_USE_X11 OR DEQP_USE_WAYLAND))
+	elseif ((DE_OS_IS_UNIX OR DE_OS_IS_OSX) AND (DEQP_USE_X11 OR DEQP_USE_WAYLAND OR DEQP_USE_SURFACELESS))
 
 		set(TCUTIL_PLATFORM_SRCS
 			lnx/tcuLnx.cpp
@@ -30,6 +30,8 @@ if (NOT DEFINED TCUTIL_PLATFORM_SRCS)
 			lnx/tcuLnxEglPlatform.cpp
 			lnx/tcuLnxVulkanPlatform.hpp
 			lnx/tcuLnxVulkanPlatform.cpp
+			lnx/surfaceless/tcuLnxSurfacelessEglDisplayFactory.hpp
+			lnx/surfaceless/tcuLnxSurfacelessEglDisplayFactory.cpp
 		)
 
 		include_directories(lnx)
@@ -82,12 +84,6 @@ if (NOT DEFINED TCUTIL_PLATFORM_SRCS)
 				)
 			include_directories(wayland)
 		endif()
-
-	elseif (DE_OS_IS_UNIX AND DEQP_USE_SURFACELESS)
-		set(TCUTIL_PLATFORM_SRCS
-			surfaceless/tcuSurfacelessPlatform.hpp
-			surfaceless/tcuSurfacelessPlatform.cpp
-			)
 
 	elseif (DE_OS_IS_ANDROID)
 		set(TCUTIL_PLATFORM_SRCS

@@ -31,6 +31,8 @@
 #	include "tcuLnxWaylandEglDisplayFactory.hpp"
 #endif // DEQP_SUPPORT_WAYLAND
 
+#include "surfaceless/tcuLnxSurfacelessEglDisplayFactory.hpp"
+
 #include "egluGLContextFactory.hpp"
 
 namespace tcu
@@ -50,6 +52,7 @@ Platform::Platform (EventState& eventState)
 	m_nativeDisplayFactoryRegistry.registerFactory(wayland::egl::createDisplayFactory(eventState));
 #endif // DEQP_SUPPORT_WAYLAND
 
+	m_nativeDisplayFactoryRegistry.registerFactory(surfaceless::egl::createDisplayFactory(eventState));
 }
 
 de::MovePtr<glu::ContextFactory> Platform::createContextFactory (void)
@@ -60,4 +63,3 @@ de::MovePtr<glu::ContextFactory> Platform::createContextFactory (void)
 } // egl
 } // linux
 } // tcu
-
